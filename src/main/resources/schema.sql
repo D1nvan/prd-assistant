@@ -1,0 +1,29 @@
+CREATE TABLE IF NOT EXISTS task (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  task_id TEXT NOT NULL,
+  task_desc TEXT NOT NULL,
+  status INTEGER,
+  fail_reason TEXT,
+  creator TEXT NOT NULL,
+  create_time DATETIME DEFAULT CURRENT_TIMESTAMP,
+  update_time DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS plan (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  plan_id TEXT NOT NULL,
+  task_id TEXT NOT NULL,
+  type INTEGER,
+  content,
+  creator NOT NULL,
+  create_time DATETIME DEFAULT CURRENT_TIMESTAMP,
+  update_time DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS chat-memory ( 
+  conversation_id TEXT NOT NULL,
+	content TEXT NOT NULL, 
+  type TEXT NOT NULL, 
+  timestamp REAL NOT NULL,
+	CHECK (type IN ('USER', 'ASSISTANT', 'SYSTEM', 'TOOL'))
+);
