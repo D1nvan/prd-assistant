@@ -15,6 +15,8 @@ public class Plan {
     private String planId;
     
     private String taskId;
+
+    private String title;
     
     private Integer type;
     

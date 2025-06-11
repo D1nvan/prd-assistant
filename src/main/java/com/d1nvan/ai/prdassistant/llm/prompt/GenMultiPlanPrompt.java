@@ -10,7 +10,7 @@ public class GenMultiPlanPrompt {
             根据用户输入的任务描述，生成三个不同资源配置和复杂度的解决方案，每个方案都要包含完整的产品设计思路和技术架构说明。
             <task_desc>
             {{taskDesc}}
-            </task_desc>，
+            </task_desc>，  
             </task_objective>
 
             <solution_framework>
@@ -53,7 +53,7 @@ public class GenMultiPlanPrompt {
             下面是一个完整的方案所需要包含的内容：
 
             <planX>
-            ### 方案X：[方案名称]
+            ### 方案X：<planName>方案名称</planName>
 
             **1. 方案概述**（150-200字）
             - 核心设计理念

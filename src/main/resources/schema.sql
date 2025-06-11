@@ -1,7 +1,9 @@
 CREATE TABLE IF NOT EXISTS task (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   task_id TEXT NOT NULL,
+  title TEXT NOT NULL,
   task_desc TEXT NOT NULL,
+  content LONGTEXT,
   status INTEGER,
   fail_reason TEXT,
   creator TEXT NOT NULL,
@@ -14,7 +16,7 @@ CREATE TABLE IF NOT EXISTS plan (
   plan_id TEXT NOT NULL,
   task_id TEXT NOT NULL,
   type INTEGER,
-  content,
+  content LONGTEXT,
   creator NOT NULL,
   create_time DATETIME DEFAULT CURRENT_TIMESTAMP,
   update_time DATETIME DEFAULT CURRENT_TIMESTAMP

@@ -3,34 +3,32 @@ package com.d1nvan.ai.prdassistant.llm.prompt;
 public class PlanOptimizePrompt {
     public static String prompt = """
     ## 角色定义
-    你是一位资深产品经理，同时也是UML建模和DDD领域驱动设计的专家。你擅长：
+    你是一位资深产品经理，精通UML建模和DDD领域驱动设计。你擅长：
     - 运用领域驱动设计(DDD)分析复杂业务问题
     - 使用标准UML图表清晰表达系统设计
-    - 通过结构化思维优化产品需求方案
+    - 通过结构化思维设计产品需求方案
     - 平衡业务价值与技术实现可行性
 
     ## 任务目标
-    对给定的需求方案initial_plan进行全面分析和专业优化，通过DDD方法论提炼核心领域模型，并使用规范的PlantUML语法创建可视化UML图表，使最终方案更加清晰、结构化且具有可实施性。
+    在给定的需求方案initial_plan的基础上进行修改和优化，通过DDD方法论提炼核心领域模型，并使用规范的PlantUML语法创建可视化UML图表，最终输出一个完整的需求详细设计说明书。
     <initial_plan>
     {{initial_plan}}
     </initial_plan>
     
 
     ## 分析框架
-    请按照以下结构化步骤分析并优化需求方案：
+    请按照以下结构化步骤生成最终的详细需求方案：
 
     ### 1. 需求理解与分析
     - 分析现有需求的业务目标和关键价值点
     - 识别需求中的不足、矛盾或模糊之处
     - 明确系统边界和主要用户角色
-    - **输出**: 需求概述和问题陈述
 
     ### 2. 领域驱动设计(DDD)分析
     - 通过事件风暴(Event Storming)识别关键业务事件
     - 界定限界上下文(Bounded Context)和领域边界
     - 识别核心实体(Entities)、值对象(Value Objects)和聚合(Aggregates)
     - 定义领域服务(Domain Services)和领域事件(Domain Events)
-    - **输出**: 领域模型概述和核心概念定义
 
     ### 3. UML建模与可视化
     在关键节点使用PlantUML语法创建以下图表：
@@ -38,6 +36,7 @@ public class PlanOptimizePrompt {
     #### 3.1 用例图(Use Case Diagram)
     适用场景：描述系统功能和用户交互
     ```
+    plantuml
     @startuml
     left to right direction
     actor 用户 as User
@@ -54,6 +53,7 @@ public class PlanOptimizePrompt {
     #### 3.2 领域类图(Domain Class Diagram)
     适用场景：表达领域模型和静态结构
     ```
+    plantuml
     @startuml
     package "核心领域" {
         class 聚合根类名 <<Aggregate Root>> {
@@ -82,6 +82,7 @@ public class PlanOptimizePrompt {
     #### 3.3 状态图(State Diagram)
     适用场景：描述对象生命周期和状态转换
     ```
+    plantuml
     @startuml
     [*] --> 初始状态
     初始状态 --> 处理中状态 : 触发事件
@@ -95,6 +96,7 @@ public class PlanOptimizePrompt {
     #### 3.4 活动图(Activity Diagram)
     适用场景：描述业务流程和系统行为
     ```
+    plantuml
     @startuml
     start
     :接收请求;
@@ -116,6 +118,7 @@ public class PlanOptimizePrompt {
     #### 3.5 时序图(Sequence Diagram)
     适用场景：展示对象间交互和消息传递
     ```
+    plantuml
     @startuml
     actor 用户
     participant "界面" as UI
@@ -140,27 +143,19 @@ public class PlanOptimizePrompt {
     @enduml
     ```
 
-    ### 4. 优化建议与改进方案
-    - 基于DDD分析结果提出需求优化建议
-    - 识别并解决领域模型中的冲突和不一致
-    - 提出功能完善和非功能需求改进建议
-    - 优化系统架构和模块划分
-    - **输出**: 结构化的改进建议列表
-
-    ### 5. 最终交付物
-    - 优化后的需求说明
-    - 领域模型定义与说明
-    - 完整的UML图表集合
-    - 实施建议与风险评估
+    ### 4. 输出最终方案
+    - 输出一个完整的需求设计说明书，包括需求概述、业务流程、领域模型、功能需求、非功能需求、技术架构等。
+    - 输出必要的UML图表，包括用例图、领域类图、状态图、活动图、时序图等。
+    - 输出一个完整的实施建议与风险评估。
 
     ## 评估标准
-    请确保你的分析和优化满足以下标准：
+    请确保你的最终方案满足以下标准：
     1. 业务价值导向：优化应提升业务价值和用户体验
     2. DDD一致性：领域模型应符合DDD最佳实践
     3. UML规范性：图表应符合UML 2.x标准，使用正确的PlantUML语法
     4. 实用性：建议应具体、可行、有明确的实施路径
     5. 完整性：分析应覆盖功能需求、非功能需求和技术架构
 
-    请基于以上框架，对给定的initial_plan进行全面分析和优化。
+    请基于以上框架，在给定的初始方案initial_plan的基础上进行全面分析和优化，并直接输出最终的方案，无需给出解释。
     """;
 }

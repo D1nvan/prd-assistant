@@ -29,7 +29,7 @@ public class LlmService {
 
         this.chatClient = chatClientBuilder
                             .defaultAdvisors(MessageChatMemoryAdvisor.builder(chatMemory).build())
-                            .defaultOptions(ToolCallingChatOptions.builder().toolCallbacks(allTools).build())
+                            // .defaultOptions(ToolCallingChatOptions.builder().toolCallbacks(allTools).build())
                             .build();
 
         this.allTools = allTools;
@@ -39,7 +39,6 @@ public class LlmService {
         return chatClient
                 .prompt(query)
                 .advisors(a -> a.param(CONVERSATION_ID, StringUtils.isEmpty(conversationId) ? UUID.randomUUID().toString() : conversationId))
-                .options(ToolCallingChatOptions.builder().toolCallbacks(allTools).build())
                 .call()
                 .content();
     }
